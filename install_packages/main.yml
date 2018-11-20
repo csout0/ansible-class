@@ -1,10 +1,16 @@
 ---
-- name: latest epel release
+- name: Install Packages
   hosts: localhost
   gather_facts: false
 
   tasks:
-    - name: download latest epel release
-      yum:
-        name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-        state: present
+    - name: Install python, gcc and ansible
+      yum: 
+        pkg="{{ item }}" 
+        state=installed
+      with_items:
+        - python 
+        - python-devel
+        - python-pip
+        - gcc
+        - ansible
