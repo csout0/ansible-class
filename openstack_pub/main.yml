@@ -1,0 +1,11 @@
+---
+- name: Get openstack.pub key
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+        
+    - name: Download openstack.pub file and place in auth_keys
+      get_url:
+        url: http://www.opentlc.com/download/ansible_bootcamp/openstack_keys/openstack.pub
+        dest: /home/cloud-user/.ssh/authorized_keys
